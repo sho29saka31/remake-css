@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+/* おんりー検定用スタイル - メインカラー: #FCC700 */
+
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0;
+  background: transparent;
+}
+
+.container {
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+
+h1 {
+  color: #FCC700;
+  text-align: center;
+  margin: 0 0 5px 0;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.subtitle {
+  text-align: center;
+  color: #666;
+  margin: 0 0 15px 0;
+  font-size: 14px;
+}
+
+.exam-number-display {
+  background: linear-gradient(135deg, #FCC700 0%, #D4A400 100%);
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  margin: 15px 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.exam-number-value {
+  font-size: 32px;
+  letter-spacing: 4px;
+  font-family: 'Courier New', monospace;
+  margin: 10px 0;
+}
+
+.level-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.level-button {
+  flex: 1;
+  padding: 18px 10px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  text-align: center;
+  border: none;
+}
+
+.level-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+.beginner {
+  background: linear-gradient(135deg, #FFE066 0%, #FCC700 100%);
+}
+
+.intermediate {
+  background: linear-gradient(135deg, #FCC700 0%, #D4A400 100%);
+}
+
+.advanced {
+  background: linear-gradient(135deg, #D4A400 0%, #9A7700 100%);
+}
+
+.form-container {
+  margin-top: 20px;
+  display: none;
+}
+
+.form-container.active {
+  display: block;
+}
+
+#form-iframe {
+  width: 100%;
+  height: 800px;
+  border: none;
+  border-radius: 8px;
+}
+
+.result-button {
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #FCC700 0%, #D4A400 100%);
+  color: white;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  margin-top: 20px;
+  transition: all 0.3s ease;
+}
+
+.result-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+.hidden {
+  display: none;
+}
+
+.result-display {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.success-icon {
+  font-size: 64px;
+  margin-bottom: 20px;
+}
+
+.fail-icon {
+  font-size: 64px;
+  margin-bottom: 20px;
+}
+
+.error-icon {
+  font-size: 64px;
+  margin-bottom: 20px;
+}
+
+.result-display h2 {
+  margin: 0 0 15px 0;
+  font-size: 28px;
+}
+
+.result-display .message {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.result-display .details {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 15px;
+}
+
+.result-display .details h3 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.result-display .details p {
+  margin: 5px 0;
+  color: #666;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+}
+
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #FCC700;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.retry-button {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #FCC700 0%, #D4A400 100%);
+  color: white;
+  margin-top: 15px;
+}
+
+.retry-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.temporary-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #FCC700;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  z-index: 1000;
+  font-size: 16px;
+  font-weight: bold;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.gorilla-area {
+  padding: 15px 20px;
+  margin: 20px 0;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  background: linear-gradient(135deg, #FFE066 0%, #FCC700 100%);
+  border-radius: 12px;
+  cursor: default;
+  user-select: none;
+}
+
+.gorilla-area.clickable {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.gorilla-area.clickable:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(252, 199, 0, 0.5);
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 id="kentei-title">検定</h1>
+
+    <!-- クリックエリア（結果確認用） -->
+    <div id="gorilla-click-area" class="gorilla-area hidden" onclick="checkResult()">
+      検定を受けて合格証をゲットしよう！
+    </div>
+
+    <p class="subtitle" id="level-instruction">レベルを選択してください</p>
+
+    <div class="level-buttons" id="level-buttons-container">
+      <button class="level-button beginner" onclick="loadForm('Lv1')">Lv1</button>
+      <button class="level-button intermediate" onclick="loadForm('Lv2')">Lv2</button>
+      <button class="level-button advanced" onclick="loadForm('Lv3')">Lv3</button>
+    </div>
+
+    <div id="loading" class="loading hidden">
+      <div class="spinner"></div>
+      <h2>合格証を確認中...</h2>
+      <p class="message">少々お待ちください</p>
+    </div>
+
+    <div id="result" class="result-display hidden"></div>
+
+    <div class="form-container" id="form-container">
+      <iframe id="form-iframe"></iframe>
+    </div>
+
+    <div id="temporary-message" class="temporary-message hidden"></div>
+
+  </div>
+
+  <script>
+    // ============================================
+    // 設定: このセクションのみ変更してください
+    // ============================================
+
+    // 検定設定
+    const KENTEI_CONFIG = {
+      'G1': {
+        displayName: '検定名',
+        levels: {
+          'Lv1': {
+            displayName: '初級',
+            gasApiUrl: 'https://script.google.com/macros/s/YOUR_GAS_DEPLOY_URL_LV1/exec',
+            forms: [
+              { url: 'https://docs.google.com/forms/d/e/YOUR_FORM_ID_1/viewform', entryId: 'YOUR_ENTRY_ID' },
+              { url: 'https://docs.google.com/forms/d/e/YOUR_FORM_ID_2/viewform', entryId: 'YOUR_ENTRY_ID' },
+              { url: 'https://docs.google.com/forms/d/e/YOUR_FORM_ID_3/viewform', entryId: 'YOUR_ENTRY_ID' },
+              { url: 'https://docs.google.com/forms/d/e/YOUR_FORM_ID_4/viewform', entryId: 'YOUR_ENTRY_ID' },
+              { url: 'https://docs.google.com/forms/d/e/YOUR_FORM_ID_5/viewform', entryId: 'YOUR_ENTRY_ID' }
+            ]
+          },
+          'Lv2': {
+            displayName: '中級',
+            gasApiUrl: 'https://script.google.com/macros/s/YOUR_GAS_DEPLOY_URL_LV2/exec',
+            forms: [
+              { url: 'https://docs.google.com/forms/d/e/YOUR_FORM_ID_1/viewform', entryId: 'YOUR_ENTRY_ID' },
+              { url: 'https://docs.google.com/forms/d/e/YOUR_FORM_ID_2/viewform', entryId: 'YOUR_ENTRY_ID' },
+              { url: 'https://docs.google.com/forms/d/e/YOUR_FORM_ID_3/viewform', entryId: 'YOUR_ENTRY_ID' },
+              { url: 'https://docs.google.com/forms/d/e/YOUR_FORM_ID_4/viewform', entryId: 'YOUR_ENTRY_ID' },
+              { url: 'https://docs.google.com/forms/d/e/YOUR_FORM_ID_5/viewform', entryId: 'YOUR_ENTRY_ID' }
+            ]
+          },
+          'Lv3': {
+            displayName: '上級',
+            gasApiUrl: 'https://script.google.com/macros/s/YOUR_GAS_DEPLOY_URL_LV3/exec',
+            forms: [
+              { url: 'https://docs.google.com/forms/d/e/YOUR_FORM_ID_1/viewform', entryId: 'YOUR_ENTRY_ID' },
+              { url: 'https://docs.google.com/forms/d/e/YOUR_FORM_ID_2/viewform', entryId: 'YOUR_ENTRY_ID' },
+              { url: 'https://docs.google.com/forms/d/e/YOUR_FORM_ID_3/viewform', entryId: 'YOUR_ENTRY_ID' },
+              { url: 'https://docs.google.com/forms/d/e/YOUR_FORM_ID_4/viewform', entryId: 'YOUR_ENTRY_ID' },
+              { url: 'https://docs.google.com/forms/d/e/YOUR_FORM_ID_5/viewform', entryId: 'YOUR_ENTRY_ID' }
+            ]
+          }
+        }
+      }
+    };
+
+    // ============================================
+    // 以下は変更不要（自動的に導出される）
+    // ============================================
+
+    // 現在の検定設定から値を取得
+    const KENTEI_NAME = Object.keys(KENTEI_CONFIG)[0];  // 'G1'
+    const CURRENT_KENTEI = KENTEI_CONFIG[KENTEI_NAME];
+    const LEVEL_NAMES = Object.keys(CURRENT_KENTEI.levels);  // ['Lv1', 'Lv2', 'Lv3']
+
+    // 後方互換性のため、既存の形式でも取得できるようにする
+    const KENTEI_DISPLAY_NAMES = {
+      [KENTEI_NAME]: CURRENT_KENTEI.displayName
+    };
+
+    const LEVEL_DISPLAY_NAMES = {};
+    LEVEL_NAMES.forEach(level => {
+      LEVEL_DISPLAY_NAMES[level] = CURRENT_KENTEI.levels[level].displayName;
+    });
+
+    const GAS_API_URLS = {
+      [KENTEI_NAME]: {}
+    };
+    LEVEL_NAMES.forEach(level => {
+      GAS_API_URLS[KENTEI_NAME][level] = CURRENT_KENTEI.levels[level].gasApiUrl;
+    });
+
+    const FORM_CONFIG = {
+      [KENTEI_NAME]: {}
+    };
+    LEVEL_NAMES.forEach(level => {
+      FORM_CONFIG[KENTEI_NAME][level] = CURRENT_KENTEI.levels[level].forms;
+    });
+
+
+    // 受験番号生成関数（6桁英数字）
+    function generateExamNumber() {
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      let examNumber = '';
+      for (let i = 0; i < 6; i++) {
+        examNumber += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      return examNumber;
+    }
+
+    // ランダムにフォームを選択してプリフィルURLを生成
+    function generatePrefilledUrl(level) {
+      const kentei = KENTEI_NAME;
+      const forms = FORM_CONFIG[kentei][level];
+
+      if (!forms || forms.length === 0) {
+        console.error('エラー: このレベルのフォームが設定されていません');
+        return '';
+      }
+
+      // ランダムに1つ選択
+      const randomIndex = Math.floor(Math.random() * forms.length);
+      const selectedForm = forms[randomIndex];
+
+      // 受験番号を取得
+      const examNumber = sessionStorage.getItem('quizSessionExamNumber');
+
+      // 選択したフォーム情報をSessionStorageに保存（GAS検索用）
+      sessionStorage.setItem('quizSessionKentei', kentei);
+      sessionStorage.setItem('quizSessionLevel', level);
+      sessionStorage.setItem('quizSessionSheetIndex', randomIndex.toString());
+
+      // プリフィルURLを構築
+      const prefilledUrl = `${selectedForm.url}?usp=pp_url&entry.${selectedForm.entryId}=${encodeURIComponent(examNumber)}`;
+
+      return prefilledUrl;
+    }
+
+    // フォームを読み込む
+    function loadForm(level) {
+      const formUrl = generatePrefilledUrl(level);
+      if (formUrl) {
+        document.getElementById('form-iframe').src = formUrl;
+        document.getElementById('form-container').classList.add('active');
+        document.querySelector('.level-buttons').classList.add('hidden');
+        document.getElementById('level-instruction').classList.add('hidden');
+        document.getElementById('gorilla-click-area').classList.remove('hidden');
+        document.getElementById('gorilla-click-area').classList.add('clickable');
+      }
+    }
+
+    // 結果を確認
+    async function checkResult() {
+      // SessionStorageから受験番号とフォーム情報を取得
+      const examNumber = sessionStorage.getItem('quizSessionExamNumber');
+      const kentei = sessionStorage.getItem('quizSessionKentei') || KENTEI_NAME;
+      const level = sessionStorage.getItem('quizSessionLevel');
+      const sheetIndex = sessionStorage.getItem('quizSessionSheetIndex');
+
+      if (!examNumber) {
+        console.log('受験番号が見つかりません。ページをリロードしてください。');
+        return;
+      }
+
+      if (!level) {
+        console.log('レベル情報が見つかりません。もう一度レベルを選択してください。');
+        return;
+      }
+
+      // レベルに対応するGAS URLを取得
+      const gasApiUrl = GAS_API_URLS[kentei] && GAS_API_URLS[kentei][level];
+      if (!gasApiUrl) {
+        console.log(`${kentei} ${level} のGAS URLが設定されていません。`);
+        return;
+      }
+
+      // 連打防止
+      const gorillaArea = document.getElementById('gorilla-click-area');
+      gorillaArea.classList.remove('clickable');
+      gorillaArea.style.opacity = '0.5';
+      gorillaArea.style.cursor = 'not-allowed';
+
+      // UIの切り替え
+      document.getElementById('loading').classList.remove('hidden');
+      document.getElementById('result').classList.add('hidden');
+
+      try {
+        // GASに受験番号とシートインデックスを送信して結果を取得
+        let apiUrl = `${gasApiUrl}?action=getResult&examNumber=${encodeURIComponent(examNumber)}`;
+
+        // シートインデックスがあればパラメータに追加（GAS側で検索範囲を絞る）
+        if (sheetIndex !== null) {
+          apiUrl += `&sheetIndex=${encodeURIComponent(sheetIndex)}`;
+        }
+
+        const response = await fetch(apiUrl, {
+          method: 'GET',
+          mode: 'cors'
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        document.getElementById('loading').classList.add('hidden');
+
+        if (data.error) {
+          // エラーの場合（データが見つからない場合）
+          // 再度クリック可能にする
+          gorillaArea.classList.add('clickable');
+          gorillaArea.style.opacity = '1';
+          gorillaArea.style.cursor = 'pointer';
+
+          // 一時的なメッセージを表示
+          showTemporaryMessage('確認できませんでした。フォームを送信してからもう一度お試しください。');
+
+        } else if (data.pass) {
+          // 合格の場合
+          // 合格証画像のHTML（Base64またはURL）
+          let certificatePreviewHtml = '';
+          if (data.certificateImageBase64) {
+            certificatePreviewHtml = `<img id="certificate-preview" src="${data.certificateImageBase64}" alt="合格証" style="max-width: 100%; height: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-radius: 8px;">`;
+          } else if (data.certificateImageUrl) {
+            certificatePreviewHtml = `<img id="certificate-preview" src="${data.certificateImageUrl}" alt="合格証" style="max-width: 100%; height: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-radius: 8px;">`;
+          }
+
+          document.getElementById('result').innerHTML = `
+            <div class="success-icon">🎉</div>
+            <h2>合格おめでとうございます!</h2>
+            <div class="message">
+              満点です! 素晴らしい結果です!
+            </div>
+            <div style="margin: 20px 0;">
+              <div style="margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap;">
+                <div>
+                  <label style="display: block; margin-bottom: 5px; font-weight: bold; text-align: left;">お名前を入力してください:</label>
+                  <input type="text" id="certificate-name" placeholder="山田 太郎" style="padding: 10px; font-size: 16px; border: 2px solid #667eea; border-radius: 8px; width: 250px;">
+                </div>
+                <button class="retry-button" onclick="updateCertificateName()" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); margin-top: 22px;">名前を反映</button>
+              </div>
+              <div style="position: relative; display: inline-block; margin: 20px 0;">
+                <canvas id="certificate-canvas" style="max-width: 100%; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-radius: 8px; display: none;"></canvas>
+                ${certificatePreviewHtml}
+              </div>
+              <div style="margin-top: 15px;">
+                <button class="retry-button" onclick="downloadCertificate()" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">画像をダウンロード</button>
+              </div>
+            </div>
+            <div class="details">
+              <h3>結果詳細</h3>
+              <p><strong>検定:</strong> ${data.kentei}</p>
+              <p><strong>レベル:</strong> ${data.level}</p>
+              <p><strong>スコア:</strong> ${data.score}点 / 100点</p>
+            </div>
+            <button class="retry-button" onclick="resetView()">別のレベルに挑戦する</button>
+          `;
+          document.getElementById('result').classList.remove('hidden');
+
+          // 合格証情報をグローバルに保存（Base64を優先）
+          window.currentCertificate = {
+            imageData: data.certificateImageBase64 || data.certificateImageUrl,
+            kentei: data.kentei,
+            level: data.level,
+            kenteiDisplayName: KENTEI_DISPLAY_NAMES[data.kentei] || data.kentei,
+            levelDisplayName: LEVEL_DISPLAY_NAMES[data.level] || data.level,
+            score: data.score
+          };
+
+          // 一番上までスクロール
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        } else {
+          // 不合格の場合
+          document.getElementById('result').innerHTML = `
+            <div class="fail-icon">😢</div>
+            <h2>不合格</h2>
+            <div class="message">
+              またやろう
+            </div>
+            <div class="details">
+              <p style="margin-top: 15px; color: #667eea; font-weight: bold;">フォーム送信後の画面で「スコアを表示」ボタンから詳細な結果を確認できます</p>
+            </div>
+            <button class="retry-button" onclick="resetView()">もう一度挑戦する</button>
+          `;
+          document.getElementById('result').classList.remove('hidden');
+
+          // 一番上までスクロール
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+      } catch (error) {
+        console.error('結果取得エラー:', error);
+        document.getElementById('loading').classList.add('hidden');
+
+        // 再度クリック可能にする
+        gorillaArea.classList.add('clickable');
+        gorillaArea.style.opacity = '1';
+        gorillaArea.style.cursor = 'pointer';
+
+        // 一時的なメッセージを表示
+        showTemporaryMessage('通信エラーが発生しました。しばらくしてから再度お試しください。');
+      }
+    }
+
+    // 一時メッセージを表示（10秒後に自動で消える）
+    function showTemporaryMessage(message) {
+      const messageElement = document.getElementById('temporary-message');
+      messageElement.textContent = message;
+      messageElement.classList.remove('hidden');
+
+      // 10秒後に自動で消す
+      setTimeout(() => {
+        messageElement.classList.add('hidden');
+      }, 10000);
+    }
+
+    // 合格証に名前を反映
+    function updateCertificateName() {
+      const nameInput = document.getElementById('certificate-name');
+      const name = nameInput.value.trim();
+
+      if (!name) {
+        showTemporaryMessage('お名前を入力してください');
+        return;
+      }
+
+      if (!window.currentCertificate || !window.currentCertificate.imageData) {
+        showTemporaryMessage('合格証画像が読み込まれていません');
+        return;
+      }
+
+      const canvas = document.getElementById('certificate-canvas');
+      const preview = document.getElementById('certificate-preview');
+      const ctx = canvas.getContext('2d');
+
+      // ローディング表示
+      showTemporaryMessage('画像を生成中...');
+
+      // 画像を読み込み
+      const img = new Image();
+
+      img.onload = function() {
+        // Canvasサイズを画像サイズに合わせる
+        canvas.width = img.width;
+        canvas.height = img.height;
+
+        // 画像を描画
+        ctx.drawImage(img, 0, 0);
+
+        // 今日の日付を取得
+        const today = new Date();
+        const dateStr = `${today.getFullYear()}年${today.getMonth() + 1}月${today.getDate()}日`;
+
+        // テキストをオーバーレイ
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+
+        // 合格証タイトル
+        ctx.fillStyle = '#333333';
+        ctx.font = 'bold ' + Math.floor(img.width * 0.06) + 'px "Yu Gothic", "Hiragino Sans", sans-serif';
+        ctx.fillText('合格証', img.width / 2, img.height * 0.2);
+
+        // 名前
+        ctx.font = 'bold ' + Math.floor(img.width * 0.08) + 'px "Yu Gothic", "Hiragino Sans", sans-serif';
+        ctx.fillText(name + ' 殿', img.width / 2, img.height * 0.4);
+
+        // 合格文
+        ctx.font = Math.floor(img.width * 0.04) + 'px "Yu Gothic", "Hiragino Sans", sans-serif';
+        ctx.fillText(`あなたは ${window.currentCertificate.kenteiDisplayName} ${window.currentCertificate.levelDisplayName} に`, img.width / 2, img.height * 0.55);
+        ctx.fillText('合格したことを証します', img.width / 2, img.height * 0.62);
+
+        // 日付
+        ctx.font = Math.floor(img.width * 0.035) + 'px "Yu Gothic", "Hiragino Sans", sans-serif';
+        ctx.fillText(dateStr, img.width / 2, img.height * 0.75);
+
+        // スコア
+        ctx.font = 'bold ' + Math.floor(img.width * 0.04) + 'px "Yu Gothic", "Hiragino Sans", sans-serif';
+        ctx.fillText(`スコア: ${window.currentCertificate.score}点`, img.width / 2, img.height * 0.85);
+
+        // Canvasを表示、プレビューを非表示
+        canvas.style.display = 'block';
+        preview.style.display = 'none';
+
+        showTemporaryMessage('合格証を生成しました！');
+      };
+
+      img.onerror = function(e) {
+        console.error('画像読み込みエラー:', e);
+        showTemporaryMessage('画像の読み込みに失敗しました。');
+      };
+
+      // プレビュー画像が既に読み込まれている場合、それを使用（Base64でもURLでも動作）
+      const previewImg = document.getElementById('certificate-preview');
+      if (previewImg && previewImg.complete && previewImg.naturalWidth > 0) {
+        img.src = previewImg.src;
+      } else {
+        img.src = window.currentCertificate.imageData;
+      }
+    }
+
+    // 合格証をダウンロード
+    function downloadCertificate() {
+      if (!window.currentCertificate || !window.currentCertificate.imageData) {
+        showTemporaryMessage('合格証画像が読み込まれていません');
+        return;
+      }
+
+      const canvas = document.getElementById('certificate-canvas');
+      const preview = document.getElementById('certificate-preview');
+
+      // Canvasが表示されている場合（名前入力済み）
+      if (canvas.style.display !== 'none') {
+        canvas.toBlob(function(blob) {
+          if (!blob) {
+            showTemporaryMessage('画像の生成に失敗しました');
+            return;
+          }
+
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `合格証_${window.currentCertificate.kenteiDisplayName}_${window.currentCertificate.levelDisplayName}.png`;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+
+          showTemporaryMessage('合格証をダウンロードしました！');
+        });
+        return;
+      }
+
+      // プレビュー画像からダウンロード（名前入力前）
+      try {
+        // Base64データの場合
+        if (window.currentCertificate.imageData.startsWith('data:')) {
+          const a = document.createElement('a');
+          a.href = window.currentCertificate.imageData;
+          a.download = `合格証_${window.currentCertificate.kenteiDisplayName}_${window.currentCertificate.levelDisplayName}.png`;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          showTemporaryMessage('合格証をダウンロードしました！');
+        } else {
+          // URL形式の場合、fetchして変換
+          fetch(window.currentCertificate.imageData)
+            .then(res => res.blob())
+            .then(blob => {
+              const url = URL.createObjectURL(blob);
+              const a = document.createElement('a');
+              a.href = url;
+              a.download = `合格証_${window.currentCertificate.kenteiDisplayName}_${window.currentCertificate.levelDisplayName}.png`;
+              document.body.appendChild(a);
+              a.click();
+              document.body.removeChild(a);
+              URL.revokeObjectURL(url);
+              showTemporaryMessage('合格証をダウンロードしました！');
+            })
+            .catch(error => {
+              console.error('ダウンロードエラー:', error);
+              showTemporaryMessage('ダウンロードに失敗しました');
+            });
+        }
+      } catch (error) {
+        console.error('ダウンロードエラー:', error);
+        showTemporaryMessage('ダウンロードに失敗しました');
+      }
+    }
+
+    // ビューをリセット
+    function resetView() {
+      // フォームコンテナをリセット
+      document.getElementById('form-container').classList.remove('active');
+      document.getElementById('form-container').classList.add('hidden');
+
+      // 各種表示エリアを非表示
+      document.getElementById('loading').classList.add('hidden');
+      document.getElementById('result').classList.add('hidden');
+
+      // リセット
+      const gorillaArea = document.getElementById('gorilla-click-area');
+      gorillaArea.classList.add('hidden');
+      gorillaArea.classList.remove('clickable');
+      gorillaArea.style.opacity = '1';
+      gorillaArea.style.cursor = 'default';
+
+      // iframeをクリア
+      const iframe = document.getElementById('form-iframe');
+      iframe.src = 'about:blank';
+
+      // グローバル変数をクリア
+      window.currentCertificate = null;
+
+      // レベル選択ボタンとテキストを再表示
+      document.querySelector('.level-buttons').classList.remove('hidden');
+      document.getElementById('level-instruction').classList.remove('hidden');
+    }
+
+    // ページ読み込み時に受験番号を生成し表示
+    window.addEventListener('DOMContentLoaded', function() {
+      // 検定名タイトルを設定
+      const kenteiTitle = document.getElementById('kentei-title');
+      kenteiTitle.textContent = KENTEI_DISPLAY_NAMES[KENTEI_NAME] || KENTEI_NAME;
+
+      // レベルボタンを動的に生成
+      const levelButtonsContainer = document.getElementById('level-buttons-container');
+      levelButtonsContainer.innerHTML = '';
+      const levels = Object.keys(GAS_API_URLS[KENTEI_NAME]);
+      const buttonClasses = ['beginner', 'intermediate', 'advanced'];
+
+      levels.forEach((level, index) => {
+        const button = document.createElement('button');
+        button.className = `level-button ${buttonClasses[index] || 'beginner'}`;
+        button.onclick = function() { loadForm(level); };
+        button.textContent = LEVEL_DISPLAY_NAMES[level] || level;
+        levelButtonsContainer.appendChild(button);
+      });
+
+      // 受験番号を生成または取得
+      let examNumber = sessionStorage.getItem('quizSessionExamNumber');
+
+      if (!examNumber) {
+        examNumber = generateExamNumber();
+
+        try {
+          sessionStorage.setItem('quizSessionExamNumber', examNumber);
+
+          // 保存確認
+          const saved = sessionStorage.getItem('quizSessionExamNumber');
+
+          if (saved !== examNumber) {
+            console.error('❌ 受験番号保存検証: 失敗 - 値が一致しません');
+            console.error('  期待値:', examNumber);
+            console.error('  実際値:', saved);
+          }
+        } catch (storageError) {
+          console.error('❌ SessionStorage保存エラー:', storageError);
+        }
+      }
+    });
+  </script>
+</body>
+</html>
