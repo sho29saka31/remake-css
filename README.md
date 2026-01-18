@@ -15,12 +15,15 @@ index.html | GitHubPages用ホーム
 template.html | 一番最初にもらったファイルの元本
 
 # 画像リンクについて
+<strong>※記入文に書かれているファイル名の前に`https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/`を入れてください</strong>  
+※上記のリンクに`/`がダブりますのでどちらか消してください  
+※リンク形式は絶対に上記通りでないと正常な動作が見込まれません
 描画 物 | 適切ページ | 画像リンク(記入時用) | 記入文
--|-|-
-ロゴ | ドズル社検定 | <a href='https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/corp.png'>リンク</a> | https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/corp.png
-ゴリラ | ドズル検定 | <a href='https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/gorilla.png'>リンク</a> | https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/gorilla.png
-なす | ぼんじゅーる検定 | <a href='https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/eggplant.png'>リンク</a> | https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/eggplant.png
-バナナ | おんりー検定 | <a href='https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/banana.png'>リンク</a> | https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/banana.png
-雪だるま | おらふくん検定 | <a href='https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/snowman.png'>リンク</a> | https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/snowman.png
+-|-|-|-
+ロゴ | ドズル社検定 | <a href='https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/corp.png'>リンク</a> | `/corp.png`
+ゴリラ | ドズル検定 | <a href='https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/gorilla.png'>リンク</a> | `/gorilla.png`
+なす | ぼんじゅーる検定 | <a href='https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/eggplant.png'>リンク</a> | `/eggplant.png`
+バナナ | おんりー検定 | <a href='https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/banana.png'>リンク</a> | `/banana.png`
+雪だるま | おらふくん検定 | <a href='https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/snowman.png'>リンク</a> | `/snowman.png`
+つるはし | おおはらMEN検定 | <a href='https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/pickaxe.png'>リンク</a> | `/pickaxe.png`
 
-つるはし | おおはらMEN検定 | <a href='https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/pickaxe.png'>リンク</a> | https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/pickaxe.png
