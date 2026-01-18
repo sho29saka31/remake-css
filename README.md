@@ -15,11 +15,12 @@ index.html | GitHubPages用ホーム
 template.html | 一番最初にもらったファイルの元本
 
 # 画像リンクについて
-描画 物 | 適切ページ | 画像リンク(記入時用)
+描画 物 | 適切ページ | 画像リンク(記入時用) | 記入文
 -|-|-
-ロゴ | ドズル社検定 | <a href='https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/corp.png'>リンク</a>
-ゴリラ | ドズル検定 | <a href='https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/gorilla.png'>リンク</a>
-なす | ぼんじゅーる検定 | <a href='https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/eggplant.png'>リンク</a>
-バナナ | おんりー検定 | <a href='https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/banana.png'>リンク</a>
-雪だるま | おらふくん検定 | <a href='https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/snowman.png'>リンク</a>
-つるはし | おおはらMEN検定 | <a href='https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/pickaxe.png'>リンク</a>
+ロゴ | ドズル社検定 | <a href='https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/corp.png'>リンク</a> | https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/corp.png
+ゴリラ | ドズル検定 | <a href='https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/gorilla.png'>リンク</a> | https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/gorilla.png
+なす | ぼんじゅーる検定 | <a href='https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/eggplant.png'>リンク</a> | https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/eggplant.png
+バナナ | おんりー検定 | <a href='https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/banana.png'>リンク</a> | https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/banana.png
+雪だるま | おらふくん検定 | <a href='https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/snowman.png'>リンク</a> | https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/snowman.png
+
+つるはし | おおはらMEN検定 | <a href='https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/pickaxe.png'>リンク</a> | https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/pickaxe.png
