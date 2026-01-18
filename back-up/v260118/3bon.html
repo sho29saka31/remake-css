@@ -9,43 +9,94 @@
 
 body {
   font-family: 'Yuji Syuku', serif;
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 20px;
   background: #475950;
 }
 
 .container {
-  background: white;
-  border-radius: 16px;
-  padding: 30px 20px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+  background: #475950;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(255,255,255,0.02) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255,255,255,0.02) 0%, transparent 50%);
+  border-radius: 0;
+  padding: 40px 30px;
+  box-shadow: 
+    inset 0 0 80px rgba(0,0,0,0.2);
+  border: 12px solid #8B7355;
+  position: relative;
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255,255,255,0.008) 2px,
+      rgba(255,255,255,0.008) 4px
+    );
+  pointer-events: none;
 }
 
 h1 {
-  color: #733C93;
+  color: #FFFFFF;
   text-align: center;
-  margin: 0 0 10px 0;
-  font-size: 32px;
+  margin: 0 0 20px 0;
+  font-size: 48px;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  text-shadow: 
+    2px 2px 0px rgba(255,255,255,0.3),
+    -1px -1px 0px rgba(0,0,0,0.2),
+    0 0 8px rgba(255,255,255,0.4);
+  letter-spacing: 2px;
+}
+
+.kentei-icon {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
 }
 
 .subtitle {
   text-align: center;
-  color: #666;
-  margin: 0 0 10px 0;
-  font-size: 16px;
+  color: #FFEB3B;
+  margin: 0 0 15px 0;
+  font-size: 20px;
+  text-shadow: 
+    1px 1px 0px rgba(255,235,59,0.3),
+    -1px -1px 0px rgba(0,0,0,0.2),
+    0 0 6px rgba(255,235,59,0.3);
+  letter-spacing: 1px;
 }
 
 .warning-message {
   text-align: center;
-  color: #d32f2f;
-  margin: 0 0 25px 0;
-  font-size: 14px;
+  color: #FF6B6B;
+  margin: 0 0 30px 0;
+  font-size: 16px;
   font-weight: bold;
-  background: #ffebee;
-  padding: 10px 15px;
+  background: transparent;
+  padding: 15px 20px;
   border-radius: 8px;
+  border: 3px dashed #FF6B6B;
+  text-shadow: 
+    1px 1px 0px rgba(255,107,107,0.3),
+    -1px -1px 0px rgba(0,0,0,0.2),
+    0 0 6px rgba(255,107,107,0.3);
+  letter-spacing: 0.5px;
 }
 
 .level-buttons {
@@ -60,17 +111,21 @@ h1 {
 
 .level-button {
   width: 100%;
-  padding: 20px;
-  font-size: 20px;
+  padding: 25px;
+  font-size: 24px;
   font-weight: bold;
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
-  color: white;
-  box-shadow: 0 4px 12px rgba(115,60,147,0.3);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
   text-align: center;
-  border: none;
   font-family: 'Yuji Syuku', serif;
+  text-shadow: 
+    2px 2px 0px rgba(255,255,255,0.2),
+    -1px -1px 0px rgba(0,0,0,0.3),
+    0 0 8px rgba(255,255,255,0.3);
+  letter-spacing: 2px;
+  background: transparent;
 }
 
 .level-button:hover {
@@ -83,18 +138,18 @@ h1 {
 }
 
 .beginner {
-  background: linear-gradient(135deg, #9B59B6 0%, #733C93 100%);
-  border: 3px solid #9B59B6;
+  border: 4px solid #9B59B6;
+  color: #9B59B6;
 }
 
 .intermediate {
-  background: linear-gradient(135deg, #733C93 0%, #5A2E74 100%);
-  border: 3px solid #733C93;
+  border: 4px solid #733C93;
+  color: #733C93;
 }
 
 .advanced {
-  background: linear-gradient(135deg, #5A2E74 0%, #3E1F4F 100%);
-  border: 3px solid #5A2E74;
+  border: 4px solid #5A2E74;
+  color: #5A2E74;
 }
 
 .form-container {
@@ -110,8 +165,12 @@ h1 {
   width: 100%;
   height: 800px;
   border: none;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  box-shadow: 
+    0 0 30px rgba(255,255,255,0.1),
+    0 10px 40px rgba(0,0,0,0.5),
+    inset 0 0 0 8px rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.95);
 }
 
 .result-button {
@@ -159,40 +218,74 @@ h1 {
 }
 
 .result-display h2 {
-  margin: 0 0 15px 0;
-  font-size: 32px;
-  color: #733C93;
+  margin: 0 0 20px 0;
+  font-size: 40px;
+  color: #FFFFFF;
+  text-shadow: 
+    2px 2px 0px rgba(255,255,255,0.3),
+    -1px -1px 0px rgba(0,0,0,0.2),
+    0 0 10px rgba(255,255,255,0.4);
+  letter-spacing: 2px;
 }
 
 .result-display .message {
-  font-size: 18px;
-  margin-bottom: 20px;
-  color: #666;
-  line-height: 1.6;
+  font-size: 22px;
+  margin-bottom: 25px;
+  color: #FFEB3B;
+  line-height: 1.8;
+  text-shadow: 
+    1px 1px 0px rgba(255,235,59,0.3),
+    -1px -1px 0px rgba(0,0,0,0.2),
+    0 0 6px rgba(255,235,59,0.3);
 }
 
 .result-display .details {
-  background: #f8f9fa;
-  padding: 20px;
+  background: rgba(255,255,255,0.03);
+  padding: 25px;
   border-radius: 12px;
-  margin-top: 20px;
+  margin-top: 25px;
+  border: 3px solid rgba(255,255,255,0.15);
 }
 
 .result-display .details h3 {
-  margin: 0 0 15px 0;
-  font-size: 20px;
-  color: #333;
+  margin: 0 0 20px 0;
+  font-size: 24px;
+  color: #FFFFFF;
+  text-shadow: 
+    1px 1px 0px rgba(255,255,255,0.3),
+    -1px -1px 0px rgba(0,0,0,0.2),
+    0 0 6px rgba(255,255,255,0.3);
 }
 
 .result-display .details p {
-  margin: 8px 0;
-  color: #666;
-  font-size: 16px;
+  margin: 10px 0;
+  color: #FFEB3B;
+  font-size: 18px;
+  text-shadow: 
+    1px 1px 0px rgba(255,235,59,0.2),
+    -1px -1px 0px rgba(0,0,0,0.2);
 }
 
 .loading {
   text-align: center;
   padding: 60px 20px;
+}
+
+.loading h2 {
+  color: #FFFFFF;
+  font-size: 28px;
+  text-shadow: 
+    2px 2px 0px rgba(255,255,255,0.3),
+    -1px -1px 0px rgba(0,0,0,0.2),
+    0 0 8px rgba(255,255,255,0.4);
+}
+
+.loading .message {
+  color: #FFEB3B;
+  font-size: 18px;
+  text-shadow: 
+    1px 1px 0px rgba(255,235,59,0.3),
+    -1px -1px 0px rgba(0,0,0,0.2);
 }
 
 .spinner {
@@ -211,17 +304,22 @@ h1 {
 }
 
 .retry-button {
-  padding: 15px 30px;
-  font-size: 18px;
+  padding: 18px 35px;
+  font-size: 20px;
   font-weight: bold;
   border: none;
   border-radius: 12px;
   cursor: pointer;
   background: linear-gradient(135deg, #733C93 0%, #5A2E74 100%);
-  color: white;
+  color: #FFFFFF;
   margin-top: 15px;
   transition: all 0.3s ease;
   font-family: 'Yuji Syuku', serif;
+  text-shadow: 
+    1px 1px 0px rgba(255,255,255,0.2),
+    -1px -1px 0px rgba(0,0,0,0.3),
+    0 0 6px rgba(255,255,255,0.3);
+  letter-spacing: 1px;
 }
 
 .retry-button:hover {
@@ -259,17 +357,22 @@ h1 {
 }
 
 .result-check-area {
-  padding: 20px;
-  margin: 20px 0;
-  font-size: 20px;
+  padding: 25px;
+  margin: 25px 0;
+  font-size: 24px;
   font-weight: bold;
   text-align: center;
-  color: white;
+  color: #FFFFFF;
   background: linear-gradient(135deg, #9B59B6 0%, #733C93 100%);
   border-radius: 12px;
   cursor: default;
   user-select: none;
   border: 3px solid #9B59B6;
+  text-shadow: 
+    2px 2px 0px rgba(255,255,255,0.2),
+    -1px -1px 0px rgba(0,0,0,0.3),
+    0 0 8px rgba(255,255,255,0.3);
+  letter-spacing: 1px;
 }
 
 .result-check-area.clickable {
@@ -283,14 +386,20 @@ h1 {
 }
 
 .download-help {
-  margin-top: 10px;
-  font-size: 14px;
-  color: #666;
+  margin-top: 15px;
+  font-size: 16px;
+  color: #FFEB3B;
+  text-shadow: 
+    1px 1px 0px rgba(255,235,59,0.2),
+    -1px -1px 0px rgba(0,0,0,0.2);
 }
 
 .download-help a {
-  color: #733C93;
+  color: #90CAF9;
   text-decoration: underline;
+  text-shadow: 
+    1px 1px 0px rgba(144,202,249,0.2),
+    -1px -1px 0px rgba(0,0,0,0.2);
 }
 
 #scroll-to-top {
@@ -328,15 +437,32 @@ h1 {
   }
   
   .container {
-    padding: 20px 15px;
+    padding: 25px 15px;
+    border-width: 8px;
   }
   
   h1 {
-    font-size: 28px;
+    font-size: 36px;
+  }
+  
+  .subtitle {
+    font-size: 18px;
+  }
+  
+  .warning-message {
+    font-size: 14px;
   }
   
   .level-button {
-    padding: 18px;
+    padding: 20px;
+    font-size: 20px;
+  }
+  
+  .result-display h2 {
+    font-size: 32px;
+  }
+  
+  .result-display .message {
     font-size: 18px;
   }
   
@@ -386,7 +512,7 @@ h1 {
 
   <button id="scroll-to-top" class="scroll-to-top-button" onclick="scrollToTop()">↑</button>
 
-<script>
+  <script>
     // ============================================
     // 設定: このセクションのみ変更してください
     // ============================================
@@ -401,7 +527,8 @@ h1 {
     // 検定設定
     const KENTEI_CONFIG = {
       'G2': {
-        displayName: '🍆検定',
+        displayName: 'ぼんじゅーる検定',
+        iconUrl: 'https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/eggplant.png', // 画像URLを追加
         levels: {
           'Lv1': {
             displayName: '初級',
@@ -834,7 +961,15 @@ h1 {
     window.addEventListener('DOMContentLoaded', function() {
       // 検定名タイトルを設定
       const kenteiTitle = document.getElementById('kentei-title');
-      kenteiTitle.textContent = KENTEI_DISPLAY_NAMES[KENTEI_NAME] || KENTEI_NAME;
+      const displayName = KENTEI_DISPLAY_NAMES[KENTEI_NAME] || KENTEI_NAME;
+      const iconUrl = CURRENT_KENTEI.iconUrl; // アイコンURLを取得
+      
+      // アイコンがある場合は画像付きで表示
+      if (iconUrl) {
+        kenteiTitle.innerHTML = `<img src="${iconUrl}" alt="アイコン" class="kentei-icon">${displayName}`;
+      } else {
+        kenteiTitle.textContent = displayName;
+      }
 
       // レベルボタンを動的に生成
       const levelButtonsContainer = document.getElementById('level-buttons-container');

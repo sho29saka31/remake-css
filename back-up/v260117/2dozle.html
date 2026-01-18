@@ -3,100 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <style>
-/* 鬼畜検定用スタイル - 激ムズ感のある特別デザイン */
+/* ドズル検定用スタイル - メインカラー: #C80000 */
 
 @import url('https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap');
 
 body {
   font-family: 'Yuji Syuku', serif;
-  max-width: 900px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 20px;
   background: #475950;
 }
 
 .container {
-  background: #475950;
-  background-image: 
-    radial-gradient(circle at 20% 50%, rgba(255,255,255,0.02) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(255,255,255,0.02) 0%, transparent 50%);
-  border-radius: 0;
-  padding: 40px 30px;
-  box-shadow: 
-    inset 0 0 80px rgba(0,0,0,0.2);
-  border: 12px solid #8B7355;
-  position: relative;
-}
-
-.container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(255,255,255,0.008) 2px,
-      rgba(255,255,255,0.008) 4px
-    );
-  pointer-events: none;
+  background: white;
+  border-radius: 16px;
+  padding: 30px 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
 }
 
 h1 {
-  color: #FFFFFF;
+  color: #C80000;
   text-align: center;
-  margin: 0 0 20px 0;
-  font-size: 48px;
+  margin: 0 0 10px 0;
+  font-size: 32px;
   font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  text-shadow: 
-    2px 2px 0px rgba(255,255,255,0.3),
-    -1px -1px 0px rgba(0,0,0,0.2),
-    0 0 8px rgba(255,255,255,0.4);
-  letter-spacing: 2px;
-}
-
-.kentei-icon {
-  width: 50px;
-  height: 50px;
-  object-fit: contain;
-  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
 }
 
 .subtitle {
   text-align: center;
-  color: #FFEB3B;
-  margin: 0 0 15px 0;
-  font-size: 20px;
-  text-shadow: 
-    1px 1px 0px rgba(255,235,59,0.3),
-    -1px -1px 0px rgba(0,0,0,0.2),
-    0 0 6px rgba(255,235,59,0.3);
-  letter-spacing: 1px;
+  color: #666;
+  margin: 0 0 10px 0;
+  font-size: 16px;
 }
 
 .warning-message {
   text-align: center;
-  color: #FF6B6B;
-  margin: 0 0 30px 0;
-  font-size: 16px;
+  color: #d32f2f;
+  margin: 0 0 25px 0;
+  font-size: 14px;
   font-weight: bold;
-  background: transparent;
-  padding: 15px 20px;
+  background: #ffebee;
+  padding: 10px 15px;
   border-radius: 8px;
-  border: 3px dashed #FF6B6B;
-  text-shadow: 
-    1px 1px 0px rgba(255,107,107,0.3),
-    -1px -1px 0px rgba(0,0,0,0.2),
-    0 0 6px rgba(255,107,107,0.3);
-  letter-spacing: 0.5px;
 }
 
 .level-buttons {
@@ -111,26 +60,22 @@ h1 {
 
 .level-button {
   width: 100%;
-  padding: 25px;
-  font-size: 24px;
+  padding: 20px;
+  font-size: 20px;
   font-weight: bold;
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  color: white;
+  box-shadow: 0 4px 12px rgba(200,0,0,0.3);
   text-align: center;
+  border: none;
   font-family: 'Yuji Syuku', serif;
-  text-shadow: 
-    2px 2px 0px rgba(255,255,255,0.2),
-    -1px -1px 0px rgba(0,0,0,0.3),
-    0 0 8px rgba(255,255,255,0.3);
-  letter-spacing: 2px;
-  background: transparent;
 }
 
 .level-button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(139,0,0,0.5);
+  box-shadow: 0 6px 20px rgba(200,0,0,0.4);
 }
 
 .level-button:active {
@@ -138,18 +83,18 @@ h1 {
 }
 
 .beginner {
-  border: 4px solid #DC143C;
-  color: #DC143C;
+  background: linear-gradient(135deg, #FF6B6B 0%, #C80000 100%);
+  border: 3px solid #FF6B6B;
 }
 
 .intermediate {
-  border: 4px solid #8B0000;
-  color: #8B0000;
+  background: linear-gradient(135deg, #C80000 0%, #8B0000 100%);
+  border: 3px solid #C80000;
 }
 
 .advanced {
-  border: 4px solid #4A0000;
-  color: #4A0000;
+  background: linear-gradient(135deg, #8B0000 0%, #4A0000 100%);
+  border: 3px solid #8B0000;
 }
 
 .form-container {
@@ -165,12 +110,8 @@ h1 {
   width: 100%;
   height: 800px;
   border: none;
-  border-radius: 8px;
-  box-shadow: 
-    0 0 30px rgba(255,255,255,0.1),
-    0 10px 40px rgba(0,0,0,0.5),
-    inset 0 0 0 8px rgba(255,255,255,0.05);
-  background: rgba(255,255,255,0.95);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .result-button {
@@ -182,9 +123,9 @@ h1 {
   border: none;
   border-radius: 12px;
   cursor: pointer;
-  background: linear-gradient(135deg, #8B0000 0%, #4A0000 100%);
+  background: linear-gradient(135deg, #C80000 0%, #8B0000 100%);
   color: white;
-  box-shadow: 0 4px 12px rgba(139,0,0,0.4);
+  box-shadow: 0 4px 12px rgba(200,0,0,0.3);
   margin: 20px auto 0;
   display: block;
   transition: all 0.3s ease;
@@ -193,7 +134,7 @@ h1 {
 
 .result-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(139,0,0,0.5);
+  box-shadow: 0 6px 20px rgba(200,0,0,0.4);
 }
 
 .hidden {
@@ -218,52 +159,35 @@ h1 {
 }
 
 .result-display h2 {
-  margin: 0 0 20px 0;
-  font-size: 40px;
-  color: #FFFFFF;
-  text-shadow: 
-    2px 2px 0px rgba(255,255,255,0.3),
-    -1px -1px 0px rgba(0,0,0,0.2),
-    0 0 10px rgba(255,255,255,0.4);
-  letter-spacing: 2px;
+  margin: 0 0 15px 0;
+  font-size: 32px;
+  color: #C80000;
 }
 
 .result-display .message {
-  font-size: 22px;
-  margin-bottom: 25px;
-  color: #FFEB3B;
-  line-height: 1.8;
-  text-shadow: 
-    1px 1px 0px rgba(255,235,59,0.3),
-    -1px -1px 0px rgba(0,0,0,0.2),
-    0 0 6px rgba(255,235,59,0.3);
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #666;
+  line-height: 1.6;
 }
 
 .result-display .details {
-  background: rgba(255,255,255,0.03);
-  padding: 25px;
+  background: #f8f9fa;
+  padding: 20px;
   border-radius: 12px;
-  margin-top: 25px;
-  border: 3px solid rgba(255,255,255,0.15);
+  margin-top: 20px;
 }
 
 .result-display .details h3 {
-  margin: 0 0 20px 0;
-  font-size: 24px;
-  color: #FFFFFF;
-  text-shadow: 
-    1px 1px 0px rgba(255,255,255,0.3),
-    -1px -1px 0px rgba(0,0,0,0.2),
-    0 0 6px rgba(255,255,255,0.3);
+  margin: 0 0 15px 0;
+  font-size: 20px;
+  color: #333;
 }
 
 .result-display .details p {
-  margin: 10px 0;
-  color: #FFEB3B;
-  font-size: 18px;
-  text-shadow: 
-    1px 1px 0px rgba(255,235,59,0.2),
-    -1px -1px 0px rgba(0,0,0,0.2);
+  margin: 8px 0;
+  color: #666;
+  font-size: 16px;
 }
 
 .loading {
@@ -271,26 +195,9 @@ h1 {
   padding: 60px 20px;
 }
 
-.loading h2 {
-  color: #FFFFFF;
-  font-size: 28px;
-  text-shadow: 
-    2px 2px 0px rgba(255,255,255,0.3),
-    -1px -1px 0px rgba(0,0,0,0.2),
-    0 0 8px rgba(255,255,255,0.4);
-}
-
-.loading .message {
-  color: #FFEB3B;
-  font-size: 18px;
-  text-shadow: 
-    1px 1px 0px rgba(255,235,59,0.3),
-    -1px -1px 0px rgba(0,0,0,0.2);
-}
-
 .spinner {
   border: 5px solid #f3f3f3;
-  border-top: 5px solid #8B0000;
+  border-top: 5px solid #C80000;
   border-radius: 50%;
   width: 50px;
   height: 50px;
@@ -304,27 +211,22 @@ h1 {
 }
 
 .retry-button {
-  padding: 18px 35px;
-  font-size: 20px;
+  padding: 15px 30px;
+  font-size: 18px;
   font-weight: bold;
   border: none;
   border-radius: 12px;
   cursor: pointer;
-  background: linear-gradient(135deg, #8B0000 0%, #4A0000 100%);
-  color: #FFFFFF;
+  background: linear-gradient(135deg, #C80000 0%, #8B0000 100%);
+  color: white;
   margin-top: 15px;
   transition: all 0.3s ease;
   font-family: 'Yuji Syuku', serif;
-  text-shadow: 
-    1px 1px 0px rgba(255,255,255,0.2),
-    -1px -1px 0px rgba(0,0,0,0.3),
-    0 0 6px rgba(255,255,255,0.3);
-  letter-spacing: 1px;
 }
 
 .retry-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(139,0,0,0.4);
+  box-shadow: 0 4px 12px rgba(200,0,0,0.3);
 }
 
 .temporary-message {
@@ -332,11 +234,11 @@ h1 {
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  background: #8B0000;
+  background: #C80000;
   color: white;
   padding: 18px 30px;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(139,0,0,0.5);
+  box-shadow: 0 4px 20px rgba(200,0,0,0.4);
   z-index: 1000;
   font-size: 16px;
   font-weight: bold;
@@ -357,23 +259,17 @@ h1 {
 }
 
 .result-check-area {
-  padding: 25px;
-  margin: 25px 0;
-  font-size: 24px;
+  padding: 20px;
+  margin: 20px 0;
+  font-size: 20px;
   font-weight: bold;
   text-align: center;
-  color: #FFFFFF;
-  background: linear-gradient(135deg, #DC143C 0%, #8B0000 100%);
+  color: white;
+  background: linear-gradient(135deg, #FF6B6B 0%, #C80000 100%);
   border-radius: 12px;
   cursor: default;
   user-select: none;
-  border: 3px solid #DC143C;
-  box-shadow: 0 4px 12px rgba(139, 0, 0, 0.3);
-  text-shadow: 
-    2px 2px 0px rgba(255,255,255,0.2),
-    -1px -1px 0px rgba(0,0,0,0.3),
-    0 0 8px rgba(255,255,255,0.3);
-  letter-spacing: 1px;
+  border: 3px solid #FF6B6B;
 }
 
 .result-check-area.clickable {
@@ -383,24 +279,18 @@ h1 {
 
 .result-check-area.clickable:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(139, 0, 0, 0.6);
+  box-shadow: 0 6px 20px rgba(200, 0, 0, 0.5);
 }
 
 .download-help {
-  margin-top: 15px;
-  font-size: 16px;
-  color: #FFEB3B;
-  text-shadow: 
-    1px 1px 0px rgba(255,235,59,0.2),
-    -1px -1px 0px rgba(0,0,0,0.2);
+  margin-top: 10px;
+  font-size: 14px;
+  color: #666;
 }
 
 .download-help a {
-  color: #90CAF9;
+  color: #C80000;
   text-decoration: underline;
-  text-shadow: 
-    1px 1px 0px rgba(144,202,249,0.2),
-    -1px -1px 0px rgba(0,0,0,0.2);
 }
 
 #scroll-to-top {
@@ -409,13 +299,13 @@ h1 {
   right: 30px;
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, #8B0000 0%, #4A0000 100%);
+  background: linear-gradient(135deg, #C80000 0%, #8B0000 100%);
   color: white;
   border: none;
   border-radius: 50%;
   font-size: 24px;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(139,0,0,0.4);
+  box-shadow: 0 4px 12px rgba(200,0,0,0.3);
   display: none;
   align-items: center;
   justify-content: center;
@@ -429,7 +319,7 @@ h1 {
 
 #scroll-to-top:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(139,0,0,0.5);
+  box-shadow: 0 6px 20px rgba(200,0,0,0.4);
 }
 
 @media (max-width: 768px) {
@@ -438,32 +328,15 @@ h1 {
   }
   
   .container {
-    padding: 25px 15px;
-    border-width: 8px;
+    padding: 20px 15px;
   }
   
   h1 {
-    font-size: 36px;
-  }
-  
-  .subtitle {
-    font-size: 18px;
-  }
-  
-  .warning-message {
-    font-size: 14px;
+    font-size: 28px;
   }
   
   .level-button {
-    padding: 20px;
-    font-size: 20px;
-  }
-  
-  .result-display h2 {
-    font-size: 32px;
-  }
-  
-  .result-display .message {
+    padding: 18px;
     font-size: 18px;
   }
   
@@ -482,7 +355,7 @@ h1 {
     <h1 id="kentei-title">検定</h1>
 
     <!-- クリックエリア（結果確認用） -->
-    <div id="gorilla-click-area" class="gorilla-area hidden" onclick="checkResult()">
+    <div id="result-check-area" class="result-check-button hidden" onclick="checkResult()">
       検定を受けて合格証をゲットしよう！
     </div>
 
@@ -491,6 +364,8 @@ h1 {
 
     <div class="level-buttons" id="level-buttons-container">
       <button class="level-button beginner" onclick="loadForm('Lv1')">Lv1</button>
+      <button class="level-button intermediate" onclick="loadForm('Lv2')">Lv2</button>
+      <button class="level-button advanced" onclick="loadForm('Lv3')">Lv3</button>
     </div>
 
     <div id="loading" class="loading hidden">
@@ -502,12 +377,14 @@ h1 {
     <div id="result" class="result-display hidden"></div>
 
     <div class="form-container" id="form-container">
-      <iframe id="form-iframe"></iframe>
+      <iframe id="form-iframe" class="form-area"></iframe>
     </div>
 
     <div id="temporary-message" class="temporary-message hidden"></div>
 
   </div>
+
+  <button id="scroll-to-top" class="scroll-to-top-button" onclick="scrollToTop()">↑</button>
 
   <script>
     // ============================================
@@ -523,17 +400,42 @@ h1 {
 
     // 検定設定
     const KENTEI_CONFIG = {
-      'G7': {
-        displayName: 'ドズル社鬼畜検定',
-        iconUrl: 'https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/corp.png', // 画像URLを追加
+      'G1': {
+        displayName: '🦍検定',
         levels: {
           'Lv1': {
-            displayName: '鬼畜級',
-            gasApiUrl: 'https://script.google.com/macros/s/AKfycbxn2kmfReATpP8vWzidSVaqVtRhaqu19iSsMScqcV6G4LJ6FrHP4GPREPqwCwGF5w/exec',
+            displayName: '初級',
+            gasApiUrl: 'https://script.google.com/macros/s/AKfycbznDjw7a2gwZVvcy_IVMfMlPfL7b12OlyzLyip8mEmO_a1Wwjj9yIRNWDqFveDVd6M/exec',
             forms: [
-              { url: 'https://docs.google.com/forms/d/e/1FAIpQLScMheMa_IWqxZIzQHPYZEvrUFQgTVqiImBbf-eJbW7izXIA1w/viewform', entryId: '389382621' }
+              { url: 'https://docs.google.com/forms/d/e/1FAIpQLSczhqXv5RUxxpZ7TC0On-27dlYipis1cFdCpI0fcXFHwQVdnA/viewform', entryId: '950292422' },
+              { url: 'https://docs.google.com/forms/d/e/1FAIpQLScbtYM_u7xVJRe9izdkqsgJ3BKDmzOC7YadBwDOteCoL2-Z0Q/viewform', entryId: '950292422' },
+              { url: 'https://docs.google.com/forms/d/e/1FAIpQLSfrFHj5RdfAnUePItY6teFT9EPgox1_hO5pDXYCDt5bPecW3w/viewform', entryId: '950292422' },
+              { url: 'https://docs.google.com/forms/d/e/1FAIpQLSeyqHVQ4xvsCrO7-njl63P2MKKZS1VQSQ0-QlYuciRqYYx5Qw/viewform', entryId: '950292422' },
+              { url: 'https://docs.google.com/forms/d/e/1FAIpQLScLBCQi4e7WrVlTzygL52h4CudDXeqGkmNuOJG1973VLzUksg/viewform', entryId: '950292422' }
             ]
           },
+          'Lv2': {
+            displayName: '中級',
+            gasApiUrl: 'https://script.google.com/macros/s/AKfycbxp3p6GS2epHk68dvrV_MeVXkmDy029p1YRmbbdbH6DzkV42Z-FWNjCroc0HokSM_k/exec',
+            forms: [
+              { url: 'https://docs.google.com/forms/d/e/1FAIpQLSfMN3cK-4Kg6m21OvyRIRbIiWEwGmjnQilnPhH6_HL8MznnCw/viewform', entryId: '950292422' },
+              { url: 'https://docs.google.com/forms/d/e/1FAIpQLScv0X2DvqNKUhNLqx_ZSsLG0l9Pz3rZzWEC7Nx3wXA3qBWF3A/viewform', entryId: '950292422' },
+              { url: 'https://docs.google.com/forms/d/e/1FAIpQLSfIKg-ExrAOrURIQUJ9GbP0qJdiYIkz_hSnmPwCkRoiMxNlbw/viewform', entryId: '950292422' },
+              { url: 'https://docs.google.com/forms/d/e/1FAIpQLSeQvHLUtS7_yULv7XMs2T9Fv6omTJc0MLl6ZQH1SXXU07RLVQ/viewform', entryId: '950292422' },
+              { url: 'https://docs.google.com/forms/d/e/1FAIpQLSfQnargxCeQxmz2k6POg91V4-cvtL_XE-3GJHWGn2lGjKKaEw/viewform', entryId: '950292422' }
+            ]
+          },
+          'Lv3': {
+            displayName: '上級',
+            gasApiUrl: 'https://script.google.com/macros/s/AKfycbyf88n2FFASPN8JmnujV26CtfymL39ocjtGJKhHnOfExlH3cFswU54tIN4q-gkfMlU/exec',
+            forms: [
+              { url: 'https://docs.google.com/forms/d/e/1FAIpQLScTiS3SNySQzLW9i0-4oq69n6muXfKcKJRsuZnmCWP9FM21ug/viewform', entryId: '950292422' },
+              { url: 'https://docs.google.com/forms/d/e/1FAIpQLScRkRlgLEG7DeYSSa-jVHNk4T64Pn62Dl55AS-XOY0p0zo5rQ/viewform', entryId: '950292422' },
+              { url: 'https://docs.google.com/forms/d/e/1FAIpQLSe2AfOHa9oZHoSICzR0TXyt1zLi-XqEdLq68p8NAUAa7DBsjg/viewform', entryId: '950292422' },
+              { url: 'https://docs.google.com/forms/d/e/1FAIpQLSe9cQ7R3iHiqVGzClFxK9ZH1hk8kt5iCimlWcg1lJjFG_lyGQ/viewform', entryId: '950292422' },
+              { url: 'https://docs.google.com/forms/d/e/1FAIpQLSeMEF96m-459fp_VA0M6TS7VhWZaAFC9-RlD4QOmUlxFPnsBQ/viewform', entryId: '950292422' }
+            ]
+          }
         }
       }
     };
@@ -932,15 +834,7 @@ h1 {
     window.addEventListener('DOMContentLoaded', function() {
       // 検定名タイトルを設定
       const kenteiTitle = document.getElementById('kentei-title');
-      const displayName = KENTEI_DISPLAY_NAMES[KENTEI_NAME] || KENTEI_NAME;
-      const iconUrl = CURRENT_KENTEI.iconUrl; // アイコンURLを取得
-      
-      // アイコンがある場合は画像付きで表示
-      if (iconUrl) {
-        kenteiTitle.innerHTML = `<img src="${iconUrl}" alt="アイコン" class="kentei-icon">${displayName}`;
-      } else {
-        kenteiTitle.textContent = displayName;
-      }
+      kenteiTitle.textContent = KENTEI_DISPLAY_NAMES[KENTEI_NAME] || KENTEI_NAME;
 
       // レベルボタンを動的に生成
       const levelButtonsContainer = document.getElementById('level-buttons-container');
