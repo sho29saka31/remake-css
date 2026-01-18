@@ -1,12 +1,127 @@
 <html>
-    <main>
-        <button><a href="/remake-css/1corp.html">ドズル社</a></button>
-        <button><a href="/remake-css/2dozle.html">ドズル</a></button>
-        <button><a href="/remake-css/3bon.html">ぼんさん</a></button>
-        <button><a href="/remake-css/4only.html">おんりー</a></button>
-        <button><a href="/remake-css/5oraf.html">おらふくん</a></button>
-        <button><a href="/remake-css/6men.html">おおはらMEN</a></button>
-        <button><a href="/remake-css/7hard.html">激難問題</a></button>
-        <button><a href="/remake-css/template.html">テンプレート</a></button>
-    </main>
+    <head>
+        <style>
+@import url('https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap');
+
+body {
+  font-family: 'Yuji Syuku', serif;
+  margin: 0;
+  padding: 20px;
+  background: #475950;
+}
+
+.button-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    max-width: 450px;
+    margin: 40px auto;
+}
+
+button {
+    background: #ffffff;
+    border: 1px solid #eee;
+    border-left: 8px solid #ccc;
+    border-radius: 10px;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+}
+
+button a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 15px 25px;
+    min-height: 60px;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+button a img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.btn-corp  { border-left-color: #e60012; }
+.btn-dozle { border-left-color: #e60012; }
+.btn-bon   { border-left-color: #8a2be2; }
+.btn-only  { border-left-color: #ffd700; }
+.btn-oraf  { border-left-color: #00bfff; }
+.btn-men   { border-left-color: #ff69b4; }
+.btn-hard  { border-left-color: #ff4500; }
+
+.separator {
+    border: none;
+    border-top: 3px dotted #ffffff;
+    margin: 20px 10px;
+    opacity: 0.5;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-template {
+    margin-top: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px dashed rgba(255, 255, 255, 0.3);
+}
+
+.btn-template a {
+    color: #eee;
+    justify-content: center;
+}
+
+.btn-template:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid #ffffff;
+    transform: translateY(-2px);
+}
+
+.btn-template:hover a {
+    color: #ffffff; 
+}
+
+button:hover {
+    transform: translateX(5px);
+    background-color: #fcfcfc;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+}
+        </style>
+    </head>
+    <body> <main class="button-container">
+            <button class="btn-corp">
+                <a href="/remake-css/1corp.html"><img src="https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/corp.png" alt="">ドズル社</a>
+            </button>
+            <button class="btn-dozle">
+                <a href="/remake-css/2dozle.html"><img src="https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/gorilla.png" alt="">ドズル</a>
+            </button>
+            <button class="btn-bon">
+                <a href="/remake-css/3bon.html"><img src="https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/eggplant.png" alt="">ぼんさん</a>
+            </button>
+            <button class="btn-only">
+                <a href="/remake-css/4only.html"><img src="https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/banana.png" alt="">おんりー</a>
+            </button>
+            <button class="btn-oraf">
+                <a href="/remake-css/5oraf.html"><img src="https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/snowman.png" alt="">おらふくん</a>
+            </button>
+            <button class="btn-men">
+                <a href="/remake-css/6men.html"><img src="https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/pickaxe.png" alt="">おおはらMEN</a>
+            </button>
+            <button class="btn-hard">
+                <a href="/remake-css/7hard.html"><img src="https://raw.githubusercontent.com/sho29saka31/remake-css/refs/heads/main/images/corp.png" alt="">鬼畜問題</a>
+            </button>
+            <hr class="separator">
+            <button class="btn-template">
+                <a href="/remake-css/template.html">テンプレート</a>
+            </button>
+        </main>
+    </body>
 </html>
